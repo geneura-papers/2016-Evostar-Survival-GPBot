@@ -104,7 +104,7 @@ of the population with respect the selected rival/s, i.e. the
 individuals learn to play against it/them, and could behave poorly
 against another type of enemy \cite{Genebot_JCST,wilcoxon:ga}.
 
-The present paper proposes an co-evolutionary EA \cite{Paredis_CEA} for improving bot's AI in Planet Wars by means of an implicit fitness evaluation,
+The present paper proposes a co-evolutionary EA \cite{Paredis_CEA} for improving bot's AI in Planet Wars by means of an implicit fitness evaluation,
 % Antonio - sera 'implicit', no? EXPLICIT = NUMERICO, pa no olvidarnos ;)
 based in the \textit{survival of the individuals}.
 To this end the selection process is transformed into a \textit{tournament} (or \textit{joust}, to distinguish it from the classical tournament in EAs) in which just the winners will survive and become parents of the new offspring. This way, the fitness computation is omitted and thus, the influence of noise is reduced.  Moreover, it does not require the usual ad-hoc parameters, such as the number of battles or the score values, neither a previously existing bot to compare.
@@ -148,9 +148,9 @@ In this paper, an algorithm that creates bots using GP, without explicit (that i
 % Antonio - [TODO] mejorar este texto de abajo:
 All these questions have been answered in the experiments, in which the evolution progress (during the run) is analysed, along with the associated noise to the best obtained bots. Then, the these bots are tested against some of the state-of-the-art to check their competitiveness.
 
-The paper is structured as follows. The background section reviews related work regarding the scope (videogames) and the implementation (EAs with no fitness computation or different selection mechanisms). It also describes the problem enclosed in the Planet Wars game.
-Section \ref{sec:survival_bots} presents the proposed method, termed {Survival Bot}.
-The experiments analyzing the evolution, noise and obtained bots are described and discussed in Section \ref{sec:experiments}. Finally, the conclusions and future lines of research are presented in Section \ref{sec:conclusions}.
+%The paper is structured as follows. The background section reviews related work regarding the scope (videogames) and the implementation (EAs with no fitness computation or different selection mechanisms). It also describes the problem enclosed in the Planet Wars game.
+%Section \ref{sec:survival_bots} presents the proposed method, termed {Survival Bot}.
+%The experiments analyzing the evolution, noise and obtained bots are described and discussed in Section \ref{sec:experiments}. Finally, the conclusions and future lines of research are presented in Section \ref{sec:conclusions}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  STATE OF THE ART  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -342,34 +342,23 @@ The bot's general behaviour is described in Algorithm \ref{algoturn}.
 \end{algorithm}
 
 
-In addition, an example of a possible decision tree is presented in Figure \ref{fig:javatree}. This example tree has five nodes, including two decisions and three actions, and a depth of three levels.
-
-\begin{figure}[htb]
-
-\begin{lstlisting}[frame=single,language=Java,tabsize=4]
-if(myShipsLandedFlyingRatio < 0.696)
-	if(actualMyShipsRatio < 0.421)
-		attackWeakestNeutralPlanet(0.481);
-	else
-		attackNearestEnemyPlanet(0.913);
-else
-	attackNearestEnemyPlanet(0.891);
-\end{lstlisting}
-
-%\begin{Verbatim}[frame=single,fontsize=\small]
+%In addition, an example of a possible decision tree is presented in Figure \ref{fig:javatree}. This example tree has five nodes, including two decisions and three actions, and a depth of three levels.
 %
+%\begin{figure}[htb]
+%
+%\begin{lstlisting}[frame=single,language=Java,tabsize=4]
 %if(myShipsLandedFlyingRatio < 0.696)
-%   if(actualMyShipsRatio < 0.421)
-%      attackWeakestNeutralPlanet(0.481);
-%   else
-%      attackNearestEnemyPlanet(0.913);
+%	if(actualMyShipsRatio < 0.421)
+%		attackWeakestNeutralPlanet(0.481);
+%	else
+%		attackNearestEnemyPlanet(0.913);
 %else
-%   attackNearestEnemyPlanet(0.891);
-%
-%\end{Verbatim}
-\caption{Example of the code generated for a decision tree of an individual.}
-\label{fig:javatree}
-\end{figure}
+%	attackNearestEnemyPlanet(0.891);
+%\end{lstlisting}
+
+%\caption{Example of the code generated for a decision tree of an individual.}
+%\label{fig:javatree}
+%\end{figure}
 
 
 % ----------------------------------------------------------------------------
@@ -551,7 +540,8 @@ Figure \ref{figura:Score_VS_GPBot} presents the boxplots of the score of the who
 \begin{figure}[htb]
 \tiny
 \begin{center}
-\includegraphics[clip=true,width=9cm]{./imags/score_vs_gpbot.eps}
+\includegraphics[clip=true,width=6cm]{./imags/score_vs_gpbot_training.eps}
+\includegraphics[clip=true,width=6cm]{./imags/score_vs_gpbot_unknown.eps}
 \end{center}
 \caption{Score confronting all SurvivalBots obtained during all the runs against the best GPBot.}
 % El eje horizontal debería llamarse Number of simulations or accumulated simulations o algo.
@@ -575,7 +565,7 @@ This effect will be better studied in the experiment in Section \ref{subsec:anal
 \begin{figure}[htb]
 \tiny
 \begin{center}
-  \epsfig{file=./imags/convergence_graph,width=7cm}
+  \epsfig{file=./imags/convergence_graph,width=6cm}
 \end{center}
 \caption{Score trend during evolution. Average score of the best and of the whole population from all the runs  of SurvivalBots against the best GPBot.}
 \label{figura:convergence}
@@ -587,7 +577,8 @@ So we can conclude that an effective improvement has been done in the population
 \begin{figure}[htb]
 \tiny
 \begin{center}
-  \epsfig{file=./imags/victories_vs_GPBot_allmaps,width=9cm}
+  \epsfig{file=./imags/victories_vs_gpbot_allmaps_initial,width=6cm}
+  \epsfig{file=./imags/victories_vs_gpbot_allmaps_final,width=6cm}
 \end{center}
 \caption{Histogram of number of victories against GPBot of all the individuals in initial and final populations in 30 maps.}
 \label{figura:Victories_VS_GPBot_AllMaps}
@@ -598,7 +589,7 @@ The last study in this set of experiments concerns the age of the individuals. T
 \begin{figure}[htb]
 \tiny
 \begin{center}
-  \epsfig{file=./imags/ageall,width=7cm}
+  \epsfig{file=./imags/ageall,width=6cm}
 \end{center}
 \caption{Boxplots of the age (generations) of the population during one run.}
 
@@ -622,7 +613,7 @@ Figure \ref{figura:noise} shows the boxplots of the 30 bots of GPBot and Surviva
 \begin{figure}[htb]
 \tiny
 \begin{center}
-  \epsfig{file=./imags/noise_study,width=7cm}
+  \epsfig{file=./imags/noise_study,width=5cm}
 \end{center}
 \caption{Noise factor of the best 30 bots obtained using GPBot and SurvivalBot approaches, evaluated in 10 different maps (5 previously trained and 5 not previously trained), 30 times/battles per map. The value for each bot is the difference between the maximum and the minimum scores obtained in every map after the 30 battles.}
 \label{figura:noise}
@@ -664,7 +655,7 @@ Figure \ref{figure:boxplot_mejores_contra_clasicos} shows the boxplots of the pe
 \begin{figure}[htb]
 \tiny
 \begin{center}
-    \includegraphics[width=9cm]{./imags/boxplot_mejores_contra_clasicos.eps}
+    \includegraphics[width=7cm]{./imags/boxplot_mejores_contra_clasicos.eps}
 
 \end{center}
 \caption{Percentage of victories confronting the 30 best SurvivalBots against existing bots in the literature.}
@@ -672,86 +663,86 @@ Figure \ref{figure:boxplot_mejores_contra_clasicos} shows the boxplots of the pe
 \end{figure}
 
 
-Although this is not the main contribution of this paper, we also show the resulting behavioural engines of the obtained SurvivalBots, analysing the distribution of actions and decisions at the beginning and at the end of the evolution to understand their behaviour. Figure \ref{figura:tarta_actions} shows the final distribution of the different types of actions ($attack$, $reinforce$ and $do nothing$). This figure shows that the percentage of the $do nothing$ action in the obtained trees has been increased % la acciï¿½n se ha incrementado?
-                                % Quï¿½ significa eso? Serï¿½ que el
-                                % nï¿½meor de veces que aparece esa
-                                % acciï¿½n nosï¿½ dï¿½nde lo ha hecho, ï¿½no?
-                                % - JJ
-by the end of the evolution, as it seems logical that not all planets should attack in every turn (they may be waiting to have a large fleet to send). Of course, and because a player wins conquering the enemy planets, it is logical that the $attack$ action is more effective than $reinforce$.
-
-\begin{figure}[htb]
-\tiny
-\begin{center}
-
-
-    \includegraphics[trim=1cm 7cm 1cm 5.8cm, clip=true,width=4.5cm,angle=-90]{./imags/distribution_initial_action.eps}
-    \includegraphics[trim=1cm 7cm 1cm 6cm, clip=true,width=4.5cm,angle=-90]{./imags/distribution_final_action.eps}
-    %\includegraphics{file=./imags/distribution_final_reinforce,width=3cm,angle=-90}
-
-
-\end{center}
-\caption{Distribution of different types of actions ($attack$, $reinforce$ and $do nothing$) of the generated bots. See section \ref{subsec:generationgp} for more information about actions.}
-\label{figura:tarta_actions}
-\end{figure}
-
-Figure \ref{figura:tarta_attacking} shows the strategy when a planet is $attacking$ to other. It is clear that the generated bots have a predilection for nearest planets and the ones easiest to be conquered. This make sense because ships flying to long destinations are not being used, so, using a $rush$ strategy makes a good option to conquer and advance.
-\begin{figure}[htb]
-\tiny
-\begin{center}
-
-    \includegraphics[trim=1cm 7cm 0cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_initial_attack.eps}
-    \includegraphics[trim=1cm 7cm 0cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_final_attack.eps}
-    %\includegraphics{file=./imags/distribution_final_reinforce,width=3cm,angle=-90}
-
-\end{center}
-\caption{Condition of target planet when $attacking$: Nearest, Weakest, Wealthiest, Beneficial, Quickest, Base or Random. See section \ref{subsec:generationgp} for more information about attack actions.}
-\label{figura:tarta_attacking}
-\end{figure}
-
-Also, the actions are more focused in attacking planets owned by the Enemy (as it can be seen in Figure \ref{figura:tarta_attacking_who}). This can be explained because the bot is not only conquering planets, but also destroying enemy ships that will not be used against it in the future.
-\begin{figure}[htb]
-\tiny
-\begin{center}
-
-    \includegraphics[trim=1cm 7cm 1cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_initial_target.eps}
-    \includegraphics[trim=1cm 7cm 1cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_final_target.eps}
-    %\includegraphics{file=./imags/distribution_final_reinforce,width=3cm,angle=-90}
-
-\end{center}
-\caption{Owners of target planets when $attacking$: Enemy, Neutral, NotMy. See section \ref{subsec:generationgp} for more information about planet's owner.} % Serï¿½ notmine, ï¿½no? No notmy. FERGU: viene de NotMyPlanet
-\label{figura:tarta_attacking_who}
-\end{figure}
-
-
-Figure \ref{figura:tarta_reinforcing} shows the target when a planet is $reinforcing$ the player's planet. As in attack actions, previously explained, it seems to be a good rule focusing in reinforce closer planets, for the same reasons.
-\begin{figure}[htb]
-\tiny
-\begin{center}
-
-    \includegraphics[trim=1cm 7cm 1cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_initial_reinforce.eps}
-    \includegraphics[trim=1cm 7cm 1cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_final_reinforce.eps}
-    %\includegraphics{file=./imags/distribution_final_reinforce,width=3cm,angle=-90}
-
-\end{center}
-\caption{Destination of planets when $reinforcing$: Near, Base, Wealthiest or Weakest. See section \ref{subsec:generationgp} for more information about reinforcement actions.}
-\label{figura:tarta_reinforcing}
-\end{figure}
-
-Finally, Figure \ref{figura:tarta_decissions} shows the final proportion of $decisions$. Surprisingly the most important variable to take into account is the ratio between flying and landed ships. This can be explained because it makes sense to find an equilibrium between the two states of ships, as all ships flying or waiting may be counterproductive. The $random$ decision also has importance, as it is the one who gives weights to the branches of the tree.
-\begin{figure}[htb]
-\tiny
-\begin{center}
-
-
-    \includegraphics[trim=1cm 5.5cm 0cm 5.5cm, clip=true,width=4.5cm,angle=-90]{./imags/distribution_initial_condition.eps}
-    \includegraphics[trim=1cm 5.5cm 0cm 5.5cm, clip=true,width=4.5cm,angle=-90]{./imags/distribution_final_condition.eps}
-
-
-
-\end{center}
-\caption{Percentage of $decisions$. See section \ref{subsec:generationgp} for more information about decisions.}
-\label{figura:tarta_decissions}
-\end{figure}
+%Although this is not the main contribution of this paper, we also show the resulting behavioural engines of the obtained SurvivalBots, analysing the distribution of actions and decisions at the beginning and at the end of the evolution to understand their behaviour. Figure \ref{figura:tarta_actions} shows the final distribution of the different types of actions ($attack$, $reinforce$ and $do nothing$). This figure shows that the percentage of the $do nothing$ action in the obtained trees has been increased % la acciï¿½n se ha incrementado?
+%                                % Quï¿½ significa eso? Serï¿½ que el
+%                                % nï¿½meor de veces que aparece esa
+%                                % acciï¿½n nosï¿½ dï¿½nde lo ha hecho, ï¿½no?
+%                                % - JJ
+%by the end of the evolution, as it seems logical that not all planets should attack in every turn (they may be waiting to have a large fleet to send). Of course, and because a player wins conquering the enemy planets, it is logical that the $attack$ action is more effective than $reinforce$.
+%
+%\begin{figure}[htb]
+%\tiny
+%\begin{center}
+%
+%
+%    \includegraphics[trim=1cm 7cm 1cm 5.8cm, clip=true,width=4.5cm,angle=-90]{./imags/distribution_initial_action.eps}
+%    \includegraphics[trim=1cm 7cm 1cm 6cm, clip=true,width=4.5cm,angle=-90]{./imags/distribution_final_action.eps}
+%    %\includegraphics{file=./imags/distribution_final_reinforce,width=3cm,angle=-90}
+%
+%
+%\end{center}
+%\caption{Distribution of different types of actions ($attack$, $reinforce$ and $do nothing$) of the generated bots. See section \ref{subsec:generationgp} for more information about actions.}
+%\label{figura:tarta_actions}
+%\end{figure}
+%
+%Figure \ref{figura:tarta_attacking} shows the strategy when a planet is $attacking$ to other. It is clear that the generated bots have a predilection for nearest planets and the ones easiest to be conquered. This make sense because ships flying to long destinations are not being used, so, using a $rush$ strategy makes a good option to conquer and advance.
+%\begin{figure}[htb]
+%\tiny
+%\begin{center}
+%
+%    \includegraphics[trim=1cm 7cm 0cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_initial_attack.eps}
+%    \includegraphics[trim=1cm 7cm 0cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_final_attack.eps}
+%    %\includegraphics{file=./imags/distribution_final_reinforce,width=3cm,angle=-90}
+%
+%\end{center}
+%\caption{Condition of target planet when $attacking$: Nearest, Weakest, Wealthiest, Beneficial, Quickest, Base or Random. See section \ref{subsec:generationgp} for more information about attack actions.}
+%\label{figura:tarta_attacking}
+%\end{figure}
+%
+%Also, the actions are more focused in attacking planets owned by the Enemy (as it can be seen in Figure \ref{figura:tarta_attacking_who}). This can be explained because the bot is not only conquering planets, but also destroying enemy ships that will not be used against it in the future.
+%\begin{figure}[htb]
+%\tiny
+%\begin{center}
+%
+%    \includegraphics[trim=1cm 7cm 1cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_initial_target.eps}
+%    \includegraphics[trim=1cm 7cm 1cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_final_target.eps}
+%    %\includegraphics{file=./imags/distribution_final_reinforce,width=3cm,angle=-90}
+%
+%\end{center}
+%\caption{Owners of target planets when $attacking$: Enemy, Neutral, NotMy. See section \ref{subsec:generationgp} for more information about planet's owner.} % Serï¿½ notmine, ï¿½no? No notmy. FERGU: viene de NotMyPlanet
+%\label{figura:tarta_attacking_who}
+%\end{figure}
+%
+%
+%Figure \ref{figura:tarta_reinforcing} shows the target when a planet is $reinforcing$ the player's planet. As in attack actions, previously explained, it seems to be a good rule focusing in reinforce closer planets, for the same reasons.
+%\begin{figure}[htb]
+%\tiny
+%\begin{center}
+%
+%    \includegraphics[trim=1cm 7cm 1cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_initial_reinforce.eps}
+%    \includegraphics[trim=1cm 7cm 1cm 7cm, clip=true,width=5cm,angle=-90]{./imags/distribution_final_reinforce.eps}
+%    %\includegraphics{file=./imags/distribution_final_reinforce,width=3cm,angle=-90}
+%
+%\end{center}
+%\caption{Destination of planets when $reinforcing$: Near, Base, Wealthiest or Weakest. See section \ref{subsec:generationgp} for more information about reinforcement actions.}
+%\label{figura:tarta_reinforcing}
+%\end{figure}
+%
+%Finally, Figure \ref{figura:tarta_decissions} shows the final proportion of $decisions$. Surprisingly the most important variable to take into account is the ratio between flying and landed ships. This can be explained because it makes sense to find an equilibrium between the two states of ships, as all ships flying or waiting may be counterproductive. The $random$ decision also has importance, as it is the one who gives weights to the branches of the tree.
+%\begin{figure}[htb]
+%\tiny
+%\begin{center}
+%
+%
+%    \includegraphics[trim=1cm 5.5cm 0cm 5.5cm, clip=true,width=4.5cm,angle=-90]{./imags/distribution_initial_condition.eps}
+%    \includegraphics[trim=1cm 5.5cm 0cm 5.5cm, clip=true,width=4.5cm,angle=-90]{./imags/distribution_final_condition.eps}
+%
+%
+%
+%\end{center}
+%\caption{Percentage of $decisions$. See section \ref{subsec:generationgp} for more information about decisions.}
+%\label{figura:tarta_decissions}
+%\end{figure}
 
 
 
