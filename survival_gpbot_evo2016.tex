@@ -580,7 +580,7 @@ Figure \ref{figura:Score_VS_GPBot} presents the boxplots of the score of the who
 \includegraphics[clip=true,width=6cm]{./imags/score_vs_gpbot_training.eps}
 \includegraphics[clip=true,width=6cm]{./imags/score_vs_gpbot_unknown.eps}
 \end{center}
-\caption{Score confronting all SurvivalBots obtained during all the runs against the best GPBot.}
+\caption{Score for the confrontation for all SurvivalBots obtained during runs against the best GPBot.}
 % El eje horizontal debería llamarse Number of simulations or accumulated simulations o algo.
 \label{figura:Score_VS_GPBot}
 \end{figure}
@@ -604,7 +604,7 @@ This effect will be better studied in the experiment in Section \ref{subsec:anal
 \begin{center}
   \epsfig{file=./imags/convergence_graph,width=5cm}
 \end{center}
-\caption{Score trend during evolution. Average score of the best and of the whole population from all the runs  of SurvivalBots against the best GPBot.}
+\caption{Average score of the best and of the whole population for all runs of matches of SurvivalBots against the best GPBot.}
 \label{figura:convergence}
 \end{figure}
 
@@ -617,7 +617,7 @@ So we can conclude that an effective improvement has been done in the population
   \epsfig{file=./imags/victories_vs_gpbot_allmaps_initial,width=5.5cm}
   \epsfig{file=./imags/victories_vs_gpbot_allmaps_final,width=5.5cm}
 \end{center}
-\caption{Histogram of number of victories against GPBot of all the individuals in initial and final populations in 30 maps.}
+\caption{Histogram of number of victories against GPBot of all the individuals in initial and final populations in 30 maps.} %probably shouldn't have so many bins - JJ
 \label{figura:Victories_VS_GPBot_AllMaps}
 \end{figure}
 
@@ -634,14 +634,20 @@ The last study in this set of experiments concerns the age of the individuals. T
 \end{figure}
 
 
-After the analysis of the convergence an the correct algorithmic behaviour of the proposed method, the second set of experiments is devoted to study the noise influence in the method, since we defend that it should be reduced with our fitness-less approach.
+After the analysis of the convergence and the correct algorithmic
+behaviour of the proposed method, the second set of experiments is
+devoted to check whether this method reduces the uncertainty of
+scores, as we intended to prove in this paper.
 
 % ---------------------------------------------------------------------------
 
-\subsection{Analysis of the noise}
+\subsection{Analysis of the score uncertainty}
 \label{subsec:analysisnoise}
 
-To conduct this study we will compare the 30 best bots of GPBot and SurvivalBot obtained in the 30 runs. Then, these bots have been confronted with a hard rival, such as our expert/specialized bot, named ExpGeneBot \cite{Genebot_CIG2012}.
+To conduct this study we will compare the 30 best bots obtained by
+GPBot and SurvivalBot across 30 runs; these bots have been
+fixed with a hard to defeat rival, such as the expert/specialized bot
+named ExpGeneBot \cite{Genebot_CIG2012}. % remember: double blind - JJ
 The same 10 maps as in previous experiments have been considered, and 30 battles in each one have been done, computing the score in Equation \ref{eq:score}.
 Then a \textit{noise factor} has been calculated for every bot, as the difference between the maximum and the minimum obtained scores in the 30 matches. This is because the noise in the scope of optimization in videogames is defined as the differences in performance that the same individual/bot could show in the same conditions (map and rival), due to the pseudo-stochasticity (there are some random events/actions) present in the opponent's behaviour and sometimes in the game itself.
 
