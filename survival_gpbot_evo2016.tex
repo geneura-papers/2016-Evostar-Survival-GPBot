@@ -645,8 +645,17 @@ So we can conclude that an effective improvement has been done in the population
 \label{figura:Victories_VS_GPBot_AllMaps}
 \end{figure}
 
-The last study in this set of experiments concerns the age of the individuals. This can help to understand how the evolution is has been performed. Figure \ref{figura:age} shows the ages of the individuals during one run. It is interesting how the age has a limit and it is not increased during all the run, meaning that a truly good bot is not generated at the very beginning and remains  during all the evolution. This tends us to think that, again, the whole population is effectively improved so, the good bots are beaten by the offspring a few generations after. The extreme values which get up to 50 generations happen due to the random selection of contenders, which could omit a bot to fight for several generations.
-
+Studying the {\em age} of the evolving bots can help to understand the
+dynamics of the evolution; this is shown in Figure \ref{figura:age} for
+during one run. It is interesting how the age has an upper limit that
+does not change along run, meaning that a truly good bot is not
+generated at the very beginning and stays alive along all
+generations. This leads us to conclude that the population as a whole
+is effectively improved, since the good bots are beaten by their offspring a
+few generations down the road. The extreme values which live up to 50
+generations happen due to the random selection of contenders, which
+could make bot skip fights for several generations. 
+%
 \begin{figure}[htb]
 \tiny
 \begin{center}
@@ -656,12 +665,10 @@ The last study in this set of experiments concerns the age of the individuals. T
 
 \label{figura:age}
 \end{figure}
-
-
-After the analysis of the convergence and the correct algorithmic
-behaviour of the proposed method, the second set of experiments is
-devoted to check whether this method reduces the uncertainty of
-scores, as we intended to prove in this paper.
+%
+Having checked that the algorithm works as intended we need to know if
+it effectively reduces uncertainty in scores, one of our main
+objecties. We will do this next.
 
 % ---------------------------------------------------------------------------
 
@@ -682,18 +689,26 @@ individual/bot could show in the same conditions (map and rival), due
 to the pseudo-stochasticity (there are some random events/actions)
 present in the opponent's behaviour and sometimes in the game itself. 
 
-Figure \ref{figura:noise} shows the boxplots of the 30 bots of GPBot and SurvivalBot. According to the definition of our noise factor, a wide distance between values means a higher noise influence in the results. Thus, as it can be seen in the figure the results for SurvivalBot are quite better than those for GPBot, having a lower variance. So we can conclude that the resulting bots for our method are more reliable in terms of behaviour and thus, show a less noisy performance.
-
+Figure \ref{figura:noise} shows the boxplots of the 30 bots of GPBot
+and SurvivalBot. According to the definition of our noise factor, a
+big distance between values means a higher uncertainty in the
+results; this figure shows that the results for
+SurvivalBot are better than those for GPBot, having a lower
+variance. Thus, we can conclude that the resulting bots for our method
+are more reliable in terms of behaviour and thus, show a more robust
+and predictable behavior. 
+%
 \begin{figure}[htb]
 \tiny
 \begin{center}
   \epsfig{file=./imags/noise_study,width=4.5cm}
 \end{center}
-\caption{Noise factor of the best 30 bots obtained using GPBot and SurvivalBot approaches, evaluated in 10 different maps (5 previously trained and 5 not previously trained), 30 times/battles per map. The value for each bot is the difference between the maximum and the minimum scores obtained in every map after the 30 battles.}
+\caption{{\em Noise factor}, that is, maximum - minimun scores for every map, of the best 30 bots obtained using GPBot and SurvivalBot approaches, evaluated in 10 different maps (5 previously trained and 5 not previously trained), 30 times/battles per map.}
 \label{figura:noise}
 \end{figure}
-
-Once, we have proved that SurvivalBots have a good algorithmic behaviour, and reduction of noise, we will test the performance of the yielded bots, and will analyze how are their behavioural engines (sets of created behavioural rules).
+%
+But of course the bots are designed to win battles. We will examine
+their performance in this area next.
 
 
 % --------------------------------------------------------------
