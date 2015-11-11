@@ -143,6 +143,7 @@ against another type of enemy \cite{Genebot_JCST,wilcoxon:ga}.
 The present paper proposes a co-evolutionary EA \cite{Paredis_CEA} for improving bot's AI in Planet Wars by means of an implicit fitness evaluation,
 based in the \textit{survival of the individuals}.
 To this end the selection process is transformed into a \textit{tournament} (or \textit{joust}, to distinguish it from the classical tournament in EAs) in which just the winners will survive and become parents of the new offspring. This way, the fitness computation is omitted and thus, the influence of noise is reduced.  Moreover, it does not require the usual ad-hoc parameters, such as the number of battles or the score values, neither a previously existing bot to compare.
+
 This model is closer than the canonical evolutionary algorithm to the
 \textit{real natural selection process} which happens in nature
 \cite{darwin1859}, where just the fittest individuals survive. 
@@ -320,39 +321,42 @@ planet.
 The \textit{decisions} are based in the values of different
 \textit{variables} which are computed considering some parameters in
 the game. They were defined by a human expert in \cite{GarciaGP14},
-and are shown next (with the acronyms, preceded by a $?$ character,
-that will be used in the rest of the paper): 
+and are shown next: %(with the acronyms, preceded by a $?$ character,
+%that will be used in the rest of the paper): FERGU: esto fuera
 
 \begin{itemize}
-% Antonio - Fergu, ¿estas interrogaciones se dejan?
-\item {\em myShipsEnemyRatio} [?mSE]: Ratio between the player's ships and enemy's ships.
-\item {\em myShipsLandedFlyingRatio} [?mSLF]: Ratio between the player's landed and flying ships.
-\item {\em myPlanetsEnemyRatio} [?mPE]: Ratio between the number of player's planets and the enemy's ones.
-\item {\em myPlanetsTotalRatio} [?mPT]: Ratio between the number of player's planet and total planets (neutrals and enemy included).
-\item {\em actualMyShipsRatio} [?aMS]: Ratio between the number of ships in the specific planet that evaluates the tree and player's total ships.
-\item {\em actualLandedFlyingRatio} [?maLF]: Ratio between the number of ships landed and flying from the specific planet that evaluates the tree and player's total ships.
-\item {\em Random} [?R]: This decision was not included in the original GPBot. It has been included in the list to add a stochastic component to the agent, with the aim of performing the noise study presented in this work (in Section \ref{sec:experiments}). It is, essentially, a probability added to select one branch or the other.
+% Antonio - Fergu, ¿estas interrogaciones se dejan? FERGU: sí, se usaban en las gráficas, pero he quitado los acrónimos
+\item {\em myShipsEnemyRatio} : Ratio between the player's ships and enemy's ships.
+\item {\em myShipsLandedFlyingRatio} : Ratio between the player's landed and flying ships.
+\item {\em myPlanetsEnemyRatio} : Ratio between the number of player's planets and the enemy's ones.
+\item {\em myPlanetsTotalRatio}: Ratio between the number of player's planet and total planets (neutrals and enemy included).
+\item {\em actualMyShipsRatio}: Ratio between the number of ships in the specific planet that evaluates the tree and player's total ships.
+\item {\em actualLandedFlyingRatio}: Ratio between the number of ships landed and flying from the specific planet that evaluates the tree and player's total ships.
+\item {\em Random} : This decision was not included in the original GPBot. It has been included in the list to add a stochastic component to the agent, with the aim of performing the noise study presented in this work (in Section \ref{sec:experiments}). It is, essentially, a probability added to select one branch or the other.
 \end{itemize}
 
 %Esto tendríais que resumirlo o ponerlo en una tabla - JJ
 % Antonio - Fergu, ¿puedes ocuparte? ;D
-Finally, the possible \textit{actions} (and acronyms) are:
+%FERGU: He quitado los acrónimos que no se usan. Todas estas movidas están explicadas en GarciaGP14, como pone más arriba, así que si quieres puedes borrarlas, pero déjalas de todas formas P
+Finally, the possible \textit{actions} are:
 
 \begin{itemize}
-\item {\em Attack Nearest (Neutral|Enemy|NotMy) Planet} [ANN, ANE, ANNm]: The objective is the nearest planet.
-\item {\em Attack Weakest (Neutral|Enemy|NotMy) Planet} [AWkN, AWkE, AWkNm]: The objective is the planet with less ships.
-\item {\em Attack Wealthiest (Neutral|Enemy|NotMy) Planet} [AWN, AWE, AWNm]: The objective is the planet with the highest lower rate.
-\item {\em Attack Beneficial (Neutral|Enemy|NotMy) Planet} [ABN, ABE, ABNm]: The objective is the  more profitable planet, that is, the one with the highest value for growth rate divided by the amount of ships.
-\item {\em Attack Quickest (Neutral|Enemy|NotMy) Planet} [AQN, AQE, AQNm]: The objective is the easiest planet to be conquered: the lowest product between the distance from the planet being evaluated by the tree and the number of ships in the objective planet.
-\item {\em Attack (Neutral|Enemy|NotMy) Base} [ANB, AEB, ANmB]: The objective is the planet with more ships (that is, the base).
-\item {\em Attack Random Planet} [AR].
-\item {\em Reinforce Nearest Planet} [RN]: Reinforce the nearest player's planet to the planet that is being evaluated by the tree.
-\item {\em Reinforce Base} [RB]: Reinforce the player's planet with the highest amount of ships.
-\item {\em Reinforce Wealthiest Planet} [RW]: Reinforce the player's planet with highest growth rate.
-\item {\em Reinforce Weakest Planet} [RWk]: Reinforce the player's planet with less ships.
-\item {\em Do nothing} [DN].
+\item {\em Attack Nearest (Neutral|Enemy|NotMy) Planet}: The objective is the nearest planet.
+\item {\em Attack Weakest (Neutral|Enemy|NotMy) Planet}: The objective is the planet with less ships.
+\item {\em Attack Wealthiest (Neutral|Enemy|NotMy) Planet}: The objective is the planet with the highest lower rate.
+\item {\em Attack Beneficial (Neutral|Enemy|NotMy) Planet}: The objective is the  more profitable planet, that is, the one with the highest value for growth rate divided by the amount of ships.
+\item {\em Attack Quickest (Neutral|Enemy|NotMy) Planet}: The objective is the easiest planet to be conquered: the lowest product between the distance from the planet being evaluated by the tree and the number of ships in the objective planet.
+\item {\em Attack (Neutral|Enemy|NotMy) Base}: The objective is the planet with more ships (that is, the base).
+\item {\em Attack Random Planet}.
+\item {\em Reinforce Nearest Planet}: Reinforce the nearest player's planet to the planet that is being evaluated by the tree.
+\item {\em Reinforce Base}: Reinforce the player's planet with the highest amount of ships.
+\item {\em Reinforce Wealthiest Planet}: Reinforce the player's planet with highest growth rate.
+\item {\em Reinforce Weakest Planet}: Reinforce the player's planet with less ships.
+\item {\em Do nothing}.
 
 \end{itemize}
+
+
 
 The bot's general behaviour is described in Algorithm \ref{algoturn}.
 
@@ -363,7 +367,7 @@ The bot's general behaviour is described in Algorithm \ref{algoturn}.
 \STATE tree $\leftarrow$ readTree()
 \WHILE{game not finished}
   \STATE {\em /* starts the turn */}
-% Antonio - Fergu, e.g. significa 'por ejemplo'. ¿No querríais decir i.e. que significa 'es decir'?
+% Antonio - Fergu, e.g. significa 'por ejemplo'. ¿No querríais decir i.e. que significa 'es decir'? %FERGU: sí, en este caso es un ejemplo, no un "es decir" :P
   \STATE calculateGlobalPlanets() {\em /* e.g. Base or Enemy Base */}
   \STATE calculateGlobalRatios()  {\em /* e.g. myPlanetsEnemyRatio */}
   \FOR{Each p in PlayerPlanets}
@@ -505,8 +509,10 @@ Thus, to do a fair comparison with that method and the results it yields, the te
 
 30 runs of the Co-GP have been performed to obtain statistically significant results.
 
+
 \begin{table}
 \begin{center}
+{\footnotesize
 \begin{tabular}{|c|p{4cm}|}
 \hline
 {\em Parameter Name} & {\em Value} \\\hline \hline
@@ -526,6 +532,7 @@ Maps used in each evaluation & 1 random chosen among maps \#76 \#69 \#7 \#11 \#2
 \end{tabular}
 \caption{Parameter set used in the experiments.}     % [pedro]
 \label{tab:parameters}
+}
 \end{center}
 \end{table}
 
@@ -619,7 +626,7 @@ This effect will be better studied in the experiment in Section \ref{subsec:anal
 \begin{figure}[htb]
 \tiny
 \begin{center}
-  \epsfig{file=./imags/convergence_graph,width=5cm}
+  \epsfig{file=./imags/convergence_graph,width=6cm}
 \end{center}
 \caption{Average score of the best and of the whole population for all runs of matches of SurvivalBots against the best GPBot.}
 \label{figura:convergence}
@@ -631,8 +638,8 @@ So we can conclude that an effective improvement has been done in the population
 \begin{figure}[htb]
 \tiny
 \begin{center}
-  \epsfig{file=./imags/victories_vs_gpbot_allmaps_initial,width=5.5cm}
-  \epsfig{file=./imags/victories_vs_gpbot_allmaps_final,width=5.5cm}
+  \epsfig{file=./imags/victories_vs_gpbot_allmaps_initial,width=6cm}
+  \epsfig{file=./imags/victories_vs_gpbot_allmaps_final,width=6cm}
 \end{center}
 \caption{Histogram of number of victories against GPBot of all the individuals in initial and final populations in 30 maps.} %probably shouldn't have so many bins - JJ
 \label{figura:Victories_VS_GPBot_AllMaps}
@@ -720,7 +727,7 @@ Figure \ref{figure:boxplot_mejores_contra_clasicos} shows the boxplots of the pe
 \begin{figure}[htb]
 \tiny
 \begin{center}
-    \includegraphics[width=7cm]{./imags/boxplot_mejores_contra_clasicos.eps}
+    \includegraphics[width=6cm]{./imags/boxplot_mejores_contra_clasicos.eps}
 
 \end{center}
 \caption{Percentage of victories confronting the 30 best SurvivalBots against existing bots in the literature.}
@@ -858,7 +865,11 @@ effective) behavioural engines.
 %The consideration of a more flexible approach for defining the behavioural engine of the bots, such as a Genetic Programming one [REF GP Genebot], could yield more interesting results and conclusions about the value of the methods proposed in this work.
 
 
-%\section*{Acknowledgments}
+\section*{Acknowledgments}
+
+Section\\
+taking\\
+this much space
 %
 %Hidden for double-blind review
 %This paper has been funded in part by Spanish National project TIN2011-28627-C04-02 (ANYSELF) and project V17-2015 of the Microprojects program 2015 from CEI BioTIC Granada.
