@@ -147,22 +147,17 @@ To this end the selection process is transformed into a \textit{tournament} (or 
 This model is closer than the canonical evolutionary algorithm to the
 \textit{real natural selection process} which happens in nature
 \cite{darwin1859}, where just the fittest individuals survive. 
-Thus, the approach is a shape of \textit{competitive co-evolutionary
-  algorithm} \cite{Rosin_competitive_coevolution}, where the (implicit
+Thus, the approach is a \textit{competitive co-evolutionary
+  algorithm} \cite{Rosin_competitive_coevolution,YeoKeun_tournament-based_CoEA}, where the (implicit
 here) fitness of an individual depends on competition with other
 individuals. 
 
-A Genetic Programming (GP) \cite{GP_Koza92} approach has been
-implemented, due to the additional flexibility factor that this method
-offers with respect to a Genetic Algorithm (GA) \cite{GAs_Goldberg89},
-%Do we _really_ need these references? - JJ
-i.e. GP is able to create new sets of behavioral rules meanwhile GA is
-devoted to optimize the parameters of previously designed
-rules. Moreover, this technique has yielded excellent results in
-previous works related with agent generation in videogames
-\cite{GarciaGP14,EsparciaGP2013}. 
+A Genetic Programming (GP) \cite{GP_Koza92} approach has been implemented, due to the additional flexibility factor that this method offers with respect to a Genetic Algorithm (GA) \cite{GAs_Goldberg89}, 
+% Do we _really_ need these references? - JJ
+% Antonio - no necesariamente, pero si hay espacio suficiente, no están de más, creo yo. Se pueden quitar en la versión definitiva.
+i.e. GP is able to create new sets of behavioral rules meanwhile GA is devoted to optimize the parameters of previously designed rules. This technique has yielded excellent results in previous works related with agent generation in videogames \cite{GarciaGP14,EsparciaGP2013}.
 
-% Antonio - Dejar esto para luego (para las conclusiones o para los comentarios de los resulatdos)
+% Antonio - Dejar esto para luego (para las conclusiones o para los comentarios de los resultados)
 % It is not completely avoided due to the pseudo-stochasticity of the bots' behaviours.
 
 Since the algorithm runs in Planet Wars, the joust is modeled as a battle in the game. %However, in order to deal with the still present noise (pseudo-stochasticity of the bots' behaviors) every battle consists in a set of matches.
@@ -504,7 +499,7 @@ Several experiments have been conducted in order to study different issues of th
 Thus, the experiments are separated in three subsections, one per objective.
 
 The set of parameters considered in our co-evolutionary GP (Co-GP) algorithm, SurvivalBot, is shown in Table \ref{tab:parameters}.
-These parameters were previously used in \cite{GarciaGP14}, to obtain competitive bots. Since GPBot is the basis of the present proposal, we have considered it as a base for comparisons in the experiments.
+These parameters are the same as the authors used in \cite{GarciaGP14}, to obtain competitive bots. Since GPBot is the basis of the present proposal, we have considered it as a base for comparisons in the experiments.
 Thus, to do a fair comparison with that method and the results it yields, the termination criteria in SurvivalBot has been set to 8000 battles (therefore, 4000 generations/iterations), since GPBot considered 32 individuals * 5 combats per evaluation * 50 generations = 8000 evaluations/combats. The five maps are representative of different distributions and sizes of planets.
 
 30 runs of the Co-GP have been performed to obtain statistically significant results.
@@ -641,7 +636,9 @@ So we can conclude that an effective improvement has been done in the population
   \epsfig{file=./imags/victories_vs_gpbot_allmaps_initial,width=6cm}
   \epsfig{file=./imags/victories_vs_gpbot_allmaps_final,width=6cm}
 \end{center}
-\caption{Histogram of number of victories against GPBot of all the individuals in initial and final populations in 30 maps.} %probably shouldn't have so many bins - JJ
+\caption{Histogram of number of victories against GPBot of all the individuals in initial and final populations in 30 maps.} 
+%probably shouldn't have so many bins - JJ
+% Antonio - ¿cómo propones reducirlas?
 \label{figura:Victories_VS_GPBot_AllMaps}
 \end{figure}
 
@@ -678,10 +675,13 @@ objecties. We will do this next.
 To conduct this study we will compare the 30 best bots obtained by
 GPBot and SurvivalBot across 30 runs; these bots have been
 fixed with a hard to defeat rival, such as the expert/specialized bot
-named ExpGeneBot \cite{Genebot_CIG2012}. % remember: double blind - JJ
+named ExpGeneBot \cite{Genebot_CIG2012}. 
+% remember: double blind - JJ
+% Antonio - es cierto. Reviso el resto
 The same 10 maps as in previous experiments have been considered, and 30 battles in each one have been done, computing the score in Equation \ref{eq:score}.
 Then a \textit{noise factor} has been calculated for every bot, as the
 % it would be better uncertainty factor - JJ
+% Antonio - vamos a pensarlo para la versión final, porque habría que cambiar las figuras también y Antares está 'de baja'
 difference between the maximum and the minimum obtained scores in the
 30 matches. This is because the noise in the scope of optimization in
 videogames is defined as the differences in performance that the same
