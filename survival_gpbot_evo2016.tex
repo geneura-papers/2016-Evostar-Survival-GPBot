@@ -36,8 +36,10 @@
 % their surnames. This ensures that the names appear correctly in
 % the running heads and the author index.
 %
-\author{Non A. Me%
-\thanks{NoInstitute}}
+
+\author{A.Fern\'andez-Ares \and P.Garc\'ia-S\'anchez \and
+  A.M Mora \and P. A. Castillo \and J. J. Merelo \inst{1}}
+%\thanks{NoInstitute}}
 % Antonio - Los autores del de la revista eran: A.J. Fernández-Ares, P. García-Sánchez, A.M. Mora, P. A. Castillo and J.J. Merelo
 % El orden,el que decida Antares. ;)
 %
@@ -46,7 +48,10 @@
 
 % the affiliations are given next; don't give your e-mail address
 % unless you accept that it will be published
-%*\institute{No Institute}
+\institute{Dept. of Computer Architecture and Technology, University
+of Granada, Spain}
+
+
 
 %
 % NB: a more complex sample for affiliations and the mapping to the
@@ -120,7 +125,7 @@ game, and can vary from time to time. % citas para todo. FERGU TODO
 % Antonio - Ok
 
 {\em Planet Wars}, the RTS game introduced in the Google AI Challenge 2010\footnote{\url{http://planetwars.aichallenge.org/}} also presents this problem. It has been used by several authors for the study of computational intelligence in RTS games, such as generation of bots or map design \cite{Genebot_CEC11,ziolko2012automatic,Genebot_CIG2012,LaraMaps14}. 
-As a summary, the objective of the player is to conquer enemy and neutral planets in a space-like simulator. Each player owns planets (resources) that produce ships (units) depending of a growth-rate. The player must send these ships to other planets (literally, crashing towards the planet) to conquer them. A player win if he/she is the owner of all the planets or the opponent forces have been completely defeated. As requirements, only one second is the limit to calculate next actions (this time windows is called {\em turn}\footnote{Although we use this term, note that the game is always performed in real time.}), and no memory about the previous turns can be used.  Figure \ref{figura:PlanetWars1} shows a screen capture of the game.
+As a summary, the objective of the player is to conquer enemy and neutral planets in a space-like simulator. Each player owns planets (resources) that produce ships (units) depending of a growth-rate. The player must send these ships to other planets (literally, crashing towards the planet) to conquer them. A player win if he/she is the owner of all the planets or the opponent forces have been completely defeated. As requirements, only one second is the limit to calculate next actions (this time window is called {\em turn}\footnote{Although we use this term, note that the game is always performed in real time.}), and no memory about the previous turns can be used.  Figure \ref{figura:PlanetWars1} shows a screen capture of the game.
 
 \begin{figure}[htb]
 \tiny
@@ -147,7 +152,7 @@ based in the \textit{survival of the individuals}.
 To this end the selection process is transformed into a \textit{tournament} (or \textit{joust}, to distinguish it from the classical tournament in EAs) in which just the winners will survive and become parents of the new offspring. This way, the fitness computation is omitted and thus, the influence of noise is reduced.  Moreover, it does not require the usual ad-hoc parameters, such as the number of battles or the score values, neither a previously existing bot to compare.
 
 This model is closer than the canonical evolutionary algorithm to the
-\textit{real natural selection process} which happens in Nature
+\textit{real natural selection process} which happens in nature
 \cite{darwin1859}, where just the fittest individuals survive. 
 Thus, the approach can be described as a \textit{competitive co-evolutionary
   algorithm} \cite{Rosin_competitive_coevolution,YeoKeun_tournament-based_CoEA}, where the (implicit
@@ -157,7 +162,7 @@ individuals.
 A Genetic Programming (GP) \cite{GP_Koza92} approach has been implemented, due to the additional flexibility factor that this method offers with respect to a Genetic Algorithm (GA) \cite{GAs_Goldberg89}, 
 % Do we _really_ need these references? - JJ
 % Antonio - no necesariamente, pero si hay espacio suficiente, no están de más, creo yo. Se pueden quitar en la versión definitiva.
-i.e. GP is able to create new sets of behavioral rules meanwhile GA is devoted to optimize the parameters of previously designed rules. This technique has yielded excellent results in previous works related with agent generation in videogames \cite{GarciaGP14,EsparciaGP2013}.
+i.e. GP is able to create new sets of behavioral rules meanwhile while GA is devoted to optimize the parameters of previously designed rules. This technique has yielded excellent results in previous works related with agent generation in videogames \cite{GarciaGP14,EsparciaGP2013}.
 
 % Antonio - Dejar esto para luego (para las conclusiones o para los comentarios de los resultados)
 % It is not completely avoided due to the pseudo-stochasticity of the bots' behaviours.
@@ -202,7 +207,7 @@ Several experiments have been conducted, in order to measure the convergence and
 
 % Evolutionary Computation (EC) has been applied in a wide variety of issues inside the videogames scope. One of the most profiting areas inside them is the parameter optimisation of behavioural engines \cite{Mora-Evo2010,Genebot-IWANN2011}.
 %
-Evolving an AI engine to control the NPCs that play the game has become an usual and successful technique in the videogames scope. The first approach is to create a set of rules by a human expert, and then optimize the set of parameters which determine how this bot behaves. This kind of improvement has been previously performed in \cite{Genebot_CEC11,genebot-evo12,Genebot_CIG2012,CarSetup} by means of off-line (before the game) Evolutionary Algorithms.
+Evolving an AI engine to control the NPCs that play the game has become an usual and successful technique in the videogames scope. The first approach is to create a set of rules by a human expert, and then optimize the set of parameters which determine how this bot behaves. This kind of improvement has been previously performed in \cite{Genebot_CEC11,genebot-evo12,Genebot_CIG2012,CarSetup,book:evolvingtowin} by means of off-line (before the game) Evolutionary Algorithms.
 Furthermore, the use of GP \cite{GarciaGP14,EsparciaGP2013} dispenses the human expert to define the set of rules, as these rules, along with their numerical parameters, are created and evolved automatically during the run.  Thus, it is a more flexible approach for defining the behavioural engine of the bots, which can find rules that a human expert cannot imagine at all. For this reason GP has been used in this paper to generate the engines.
 
 One of the shortcomings of previous works is that they depend on a baseline bot, taken as rival during the evolution, or an ad-hoc fitness function that involves some kind of parameterization (for example, number of matches or scoring the actions). To avoid this, co-Evolutionary Algorithms (CEAs)
@@ -340,7 +345,7 @@ Finally, the possible \textit{actions} are:
 \begin{itemize}
 \item {\em Attack Nearest (Neutral|Enemy|NotMy) Planet}: The objective is the nearest planet.
 \item {\em Attack Weakest (Neutral|Enemy|NotMy) Planet}: The objective is the planet with less ships.
-\item {\em Attack Wealthiest (Neutral|Enemy|NotMy) Planet}: The objective is the planet with the highest lower rate.
+\item {\em Attack Wealthiest (Neutral|Enemy|NotMy) Planet}: The objective is the planet with the highest growth rate.
 \item {\em Attack Beneficial (Neutral|Enemy|NotMy) Planet}: The objective is the  more profitable planet, that is, the one with the highest value for growth rate divided by the amount of ships.
 \item {\em Attack Quickest (Neutral|Enemy|NotMy) Planet}: The objective is the easiest planet to be conquered: the lowest product between the distance from the planet being evaluated by the tree and the number of ships in the objective planet.
 \item {\em Attack (Neutral|Enemy|NotMy) Base}: The objective is the planet with more ships (that is, the base).
@@ -892,7 +897,6 @@ PROY-PP2015-06 (Plan Propio 2015 UGR),
 PETRA (SPIP2014-01437, funded by Dirección General de Tráfico),
 CEI2015-MP-V17 (awarded by CEI BioTIC Granada), and 
 PRY142/14 (funded by Fundación Pública Andaluza Centro de Estudios Andaluces en la IX Convocatoria de Proyectos de Investigación).
-
 
 
 \bibliographystyle{splncs03}
