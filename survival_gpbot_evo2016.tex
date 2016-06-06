@@ -507,7 +507,7 @@ Thus, the experiments are separated in three subsections, one per objective.
 
 The set of parameters considered in our co-evolutionary GP (Co-GP) algorithm, SurvivalBot, is shown in Table \ref{tab:parameters}.
 These parameters are the same as the authors used in \cite{GarciaGP14}, to obtain competitive bots. Since GPBot is the basis of the present proposal, we have considered it as a base for comparisons in the experiments.
-Thus, to do a fair comparison with that method and the results it yields, the termination criteria in SurvivalBot has been set to 8000 battles (therefore, 4000 generations/iterations), since GPBot considered 32 individuals * 5 combats per evaluation * 50 generations = 8000 evaluations/combats. The five maps are representative of different distributions and sizes of planets.
+Thus, to do a fair comparison with that method and the results it yields, the termination criteria in SurvivalBot has been set to 8000 battles (therefore, 4000 generations/iterations), since GPBot considered 32 individuals * 5 combats per evaluation * 50 generations = 8000 combats. The five maps are representative of different distributions and sizes of planets.
 
 30 runs of the Co-GP have been performed to obtain statistically significant results.
 
@@ -525,7 +525,7 @@ Crossover rate & 0.5\\ \hline
 Maximum number of turns per battle & 1000 \\\hline
 Mutation  & 1-node mutation\\ \hline
 Mutation step-size & 0.25 \\ \hline
-Selection & 2-tournament \\ \hline
+Selection & Joust (2-tournament) \\ \hline
 Replacement & Steady-state\\ \hline
 Stop criterion & 4000 iterations \\ \hline
 Maximum Tree Depth & 7  \\ \hline
@@ -622,7 +622,7 @@ Figure \ref{figura:Score_VS_GPBot} presents the boxplots of the score of the who
 %\end{figure}
 
 Figure \ref{figura:Score_VS_GPBot}  shows a convergence trend, but the effect is clearly shown in Figure \ref{figura:convergence}, which plots the average score of all individuals, and the average score of all the best (one per run), obtained during the evolution of the SurvivalBots.
-This figure shows how there exist an increasing performance in the best (and also in average) individuals during the runs. Moreover, a lightly noisy factor is present, but the oscillations are not as striking as in previous approaches \cite{Genebot_JCST}.
+This figure shows how there exist an increasing performance in the best (and also in average) individuals during the runs. Moreover, a slightly noisy factor is present, but the oscillations are not as striking as in previous approaches \cite{Genebot_JCST}.
 This effect will be better studied in the experiment in Section \ref{subsec:analysisnoise}.
 
 \begin{figure}[htb]
@@ -643,7 +643,7 @@ So we can conclude that an effective improvement has been done in the population
   \epsfig{file=./imags/victories_vs_gpbot_allmaps_initial,width=6cm}
   \epsfig{file=./imags/victories_vs_gpbot_allmaps_final,width=6cm}
 \end{center}
-\caption{Histogram of number of victories against GPBot of all the individuals in initial and final populations in 30 maps.} 
+\caption{Histogram of number of victories against GPBot of all the individuals in initial and final populations in the 30 battles (10 maps and 3 combats).} 
 %probably shouldn't have so many bins - JJ
 % Antonio - ¿cómo propones reducirlas?
 % Simplemente cambiar el número de bins en la generación del gráfico - JJ
@@ -652,7 +652,7 @@ So we can conclude that an effective improvement has been done in the population
 
 Studying the {\em age} of the evolving bots can help to understand the
 dynamics of the evolution; this is shown in Figure \ref{figura:age} for
-during one run. It is interesting how the age has an upper limit that
+one run. It is interesting how the age has an upper limit that
 does not change along run, meaning that a truly good bot is not
 generated at the very beginning and stays alive along all
 generations. This leads us to conclude that the population as a whole
@@ -673,7 +673,7 @@ could make bot skip fights for several generations.
 %
 Having checked that the algorithm works as intended we need to know if
 it effectively reduces uncertainty in scores, one of our main
-objecties. We will do this next.
+objectives. We will do this next.
 
 % ---------------------------------------------------------------------------
 
