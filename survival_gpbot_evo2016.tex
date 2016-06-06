@@ -479,7 +479,7 @@ Algorithm \ref{alg:completealgorithm} shows the combination of the GP approach, 
     \STATE {\em /* The losers will be removed from the population */}
     \STATE losers $\leftarrow$ losers + loser1 + loser2
     \STATE {\em /* Evolutionary process */}
-    \STATE son1,son2 $\leftarrow$ crossover(parent1,parent2);
+    \STATE son1,son2 $\leftarrow$ crossover(winner1,winner2);
     \STATE son1,son2 $\leftarrow$ mutation(son1,son2)
     \STATE offspring $\leftarrow$ offspring + son1 + son2
 %   \ENDFOR
